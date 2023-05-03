@@ -3,8 +3,6 @@ Compute all the errors and the final plots included in the report
 '''
 import numpy as np
 from utils import (
-    write_optical_flow, 
-    flow_uv_to_colors, 
     meanSquareError, 
 )
 from plot_utils import (
