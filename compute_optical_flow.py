@@ -42,9 +42,7 @@ def compute_all_optical_flow(
     output_path="", 
     source_img_name = "frame10.png",
     target_img_name = "frame11.png",
-    gt_image_name = "flow10.flo",
     alpha = 15, 
-    delta = 0.1, 
     num_iterations = 300,
     save_optical_flow = True,
     iteration_list = [], 
@@ -64,12 +62,9 @@ def compute_all_optical_flow(
         source_img = cv2.imread(source_img_path, cv2.IMREAD_GRAYSCALE)
         target_img = cv2.imread(target_img_path, cv2.IMREAD_GRAYSCALE)
 
-        # results = computeHS(source_img, target_img, alpha=alpha,  delta=delta, max_iter = num_iterations, iteration_list = iteration_list)
-        results = discrete_optical_flow(source_img, target_img, alpha=alpha,  delta=delta, max_iter = num_iterations, iteration_list = iteration_list)
+        results = discrete_optical_flow(source_img, target_img, alpha=alpha, max_iter = num_iterations, iteration_list = iteration_list)
         result_key  = max([*results.keys()])
 
-        [u, v] = results[result_key]
-        computed_optical_flow = np.stack((u, v), -1)
         img_gt_path = os.path.join(gt_path, img_folder)
         computed_gt_flow = compute_gt_flow(source_img, target_img, img_gt_path, use_gt = use_gt)
 
@@ -112,7 +107,6 @@ if __name__ == '__main__':
         gt_path = gt_path,
         output_path = output_path, 
         alpha = 0.15, 
-        delta = 0.1, 
         iteration_list = iteration_list, 
         num_iterations=20
     )

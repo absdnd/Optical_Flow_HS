@@ -13,25 +13,6 @@ def readOpticalFlow(flow_file_path):
     
 import numpy as np
 
-# ''' 
-# Get magnitude of the optical flow 
-# ''' 
-# def get_magnitude(u, v):
-#     scale = 3
-#     sum = 0.0
-#     counter = 0.0
-
-#     for i in range(0, u.shape[0], 8):
-#         for j in range(0, u.shape[1],8):
-#             counter += 1
-#             dy = v[i,j] * scale
-#             dx = u[i,j] * scale
-#             magnitude = (dx**2 + dy**2)**0.5
-#             sum += magnitude
-
-#     mag_avg = sum / counter
-
-#     return mag_avg
 
 def get_derivatives(img1, img2):
     x_kernel = np.array([[-1, 1], [-1, 1]]) * 0.25
@@ -184,11 +165,13 @@ def compute_image_derivatives(img1, img2):
     return [Ex, Ey, Et]
 
 
+''' 
+Optical flow computation between two images 
+- Alpha is the tradeoff parameter between brightness constancy and smoothness
+- max_iter is the maximum number of iterations
+- iteration_list is a list of iterations to save the intermediate results
 '''
-Compute the discrete optical flow between two images using an iterative method 
-here we use 4*alpha**2  = 1/lambd (4 is used as a scaling factor for regularization)
-'''
-def discrete_optical_flow(img1, img2, alpha, delta, max_iter = 300, iteration_list = []):
+def discrete_optical_flow(img1, img2, alpha, max_iter = 300, iteration_list = []):
     results = {}
     img1 = blur_image(img1.astype(float))
     img2 = blur_image(img2.astype(float))
