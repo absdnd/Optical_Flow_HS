@@ -1,4 +1,6 @@
 other-pred-flow/
 flow-code-matlab/
 flow-code/
+output/
+data/
 *.npy
