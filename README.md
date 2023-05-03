@@ -7,7 +7,7 @@ Computing the optical flow using the horn and schunk method composed of the brig
 - scipy == 1.10.1 
 
 ## Dataset 
-We utilize the middlebury optical flow dataset for this implementation. Please download the dataset from here - https://vision.middlebury.edu/flow/data/. We utilize the images with available gt-flow under **Ground Truth Flow**. Please create a `data/` folder in the root folder and download `other-gray-two-frames` and  `other-gt-flow` to this folder. 
+We utilize the middlebury optical flow dataset for this implementation. Please download the dataset from here - https://vision.middlebury.edu/flow/data/. We utilize the images with available gt-flow under **Ground Truth Flow**. Please create a `data/` folder in the root folder and download `other-gray-two-frames` and  `other-gt-flow` to this folder. (Already included in the current version of the code )
 
 ## Running the Code 
 
